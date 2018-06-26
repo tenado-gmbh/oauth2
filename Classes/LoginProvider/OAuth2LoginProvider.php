@@ -45,6 +45,14 @@ class OAuth2LoginProvider implements LoginProviderInterface
             GeneralUtility::getFileAbsFileName('EXT:oauth2/Resources/Private/Templates/OAuth2Login.html')
         );
 
+        $extensionConfig = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['oauth2']);
+        if ($extensionConfig['gitlabEnableBackendLogin']) {
+            $view->assign('gitlabEnabled', true);
+        }
+        if ($extensionConfig['githubEnableBackendLogin']) {
+            $view->assign('githubEnabled', true);
+        }
+
         if (VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) >= 9000000) {
             $view->assign('baseLayout', 'OAuth2Login-9');
         } else {

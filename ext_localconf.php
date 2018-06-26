@@ -24,10 +24,13 @@ defined('TYPO3_MODE') || die();
 
 $extensionConfig = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['oauth2']);
 
-if ($extensionConfig['gitlabEnableBackendLogin'] && !empty($extensionConfig['gitlabAppId'])
+$gitlabConfigured = ($extensionConfig['gitlabEnableBackendLogin'] && !empty($extensionConfig['gitlabAppId'])
     && !empty($extensionConfig['gitlabAppSecret'])
-    && !empty($extensionConfig['gitlabServer'])
-) {
+    && !empty($extensionConfig['gitlabServer']));
+$githubConfigured = ($extensionConfig['githubEnableBackendLogin'] && !empty($extensionConfig['githubClientId'])
+    && !empty($extensionConfig['githubClientSecret']));
+
+if ($gitlabConfigured || $githubConfigured) {
     $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['backend']['loginProviders'][1529672977] = [
         'provider' => OAuth2LoginProvider::class,
         'sorting' => 25,

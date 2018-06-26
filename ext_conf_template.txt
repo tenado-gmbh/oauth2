@@ -24,3 +24,27 @@ gitlabAdminUserLevel = 30
 
 # cat=GitLab//7; type=int; label=get db and file mounts from usergroup (0 = no, 1= only db mounts, 2 = only file mounts, 3 = both)
 gitlabUserOption = 3
+
+# cat=GitHub//0; type=boolean; label=Enable Backend Login
+githubEnableBackendLogin = 0
+
+# cat=GitHub//1; type=string; label=GitHub client Id
+githubClientId =
+
+# cat=GitHub//2; type=string; label=GitHub client secret
+githubClientSecret =
+
+# cat=GitHub//4; type=string; label=Project repository name
+githubRepositoryName =
+
+# cat=GitHub//5; type=boolean; label=override existing user
+githubOverrideUser = 0
+
+# cat=GitHub//6; type=int; label=fallback user groups of new users if no matching found in be_groups (comma separated list possible)
+githubDefaultGroups =
+
+# cat=GitHub//7; type=int; label=github at least user level for admin
+githubAdminUserLevel = 30
+
+# cat=GitHub//7; type=int; label=get db and file mounts from usergroup (0 = no, 1= only db mounts, 2 = only file mounts, 3 = both)
+githubUserOption = 3

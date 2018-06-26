@@ -6,6 +6,7 @@ namespace Mfc\OAuth2\Services;
 use League\OAuth2\Client\Provider\ResourceOwnerInterface;
 use League\OAuth2\Client\Token\AccessToken;
 use Mfc\OAuth2\ResourceServer\AbstractResourceServer;
+use Mfc\OAuth2\ResourceServer\GitHub;
 use Mfc\OAuth2\ResourceServer\GitLab;
 use TYPO3\CMS\Core\Authentication\AbstractUserAuthentication;
 use TYPO3\CMS\Core\Database\Connection;
@@ -133,6 +134,17 @@ class OAuth2LoginService extends AbstractService
                     $this->extensionConfig['gitlabDefaultGroups'] ?? '',
                     $this->extensionConfig['gitlabUserOption'] ?? '0',
                     $this->extensionConfig['gitlabRepositoryName']
+                );
+                break;
+            case 'github':
+                $this->resourceServer = new GitHub(
+                    $this->extensionConfig['githubClientId'],
+                    $this->extensionConfig['githubClientSecret'],
+                    'github',
+                    $this->extensionConfig['githubAdminUserLevel'],
+                    $this->extensionConfig['githubDefaultGroups'] ?? '',
+                    $this->extensionConfig['githubUserOption'] ?? '0',
+                    $this->extensionConfig['githubRepositoryName']
                 );
                 break;
         }
